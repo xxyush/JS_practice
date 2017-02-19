@@ -1,15 +1,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>微博应用</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>寰崥鍙戝笘</title>
 <style>
-	ul{	width:800px;	height:800px;	border:black solid 1px;	margin:10px auto; padding:0}
-	ul li{	border-bottom:black	dashed 1px; padding:4px; list-style:none; filter:alpha(opacity:0);opacity:0;	}
-	
-	#post{ width::150px; height:100px;}
+	body{background: #00FFFF}
+	ul{	width:550px;	height:800px;	border:black solid 1px;	margin:10px auto; padding:0;background-color: #fff;}
+	ul li{list-style:none; filter:alpha(opacity:0);opacity:0;padding-bottom:5px;border-bottom:black dashed 1px;	}
+	#textdiv{width: 550px;height:140px;border: solid 1px #FF3300;background-color: #fff;margin:20px auto;}
+	#post{ width:500px; height:60px;margin: 20px 20px 0;}
+	.commentselect{position: relative; width: 550px;height: 24px;margin: 6px 20px;}
+	#btn{display:inline-block;width: 80px;height: 32px;position:absolute;right:50px;background:#ff8140;border:none;}
+	.face{float:left;position: absolute; margin: 10px 0;}
+	.post_li{
+		margin: 0;
+	}
+	.post_writer{
+		background: #fff;
+		width: 100%;
+		height: 20%;
+		padding-bottom: 8px;
+	}
+	.post_content{
+		background: #EEEEEE;
+		width: 100%;
+		height: 80%
+		padding-bottom: 8px;
+	}
 </style>
-<script src="move2.js"></script>
+<script src="../js/move2.js"></script>
 <script >
 	window.onload=function()
 	{
@@ -24,14 +43,21 @@
 			{
 			
 					var oLi=document.createElement("li");
-					oLi.innerHTML=oTxt.value;
+					oLi.className="post_li";
+					var oDiv1=document.createElement("div");
+					oDiv1.className="post_writer";
+					oDiv1.innerHTML="Writer_Name";
+					oLi.appendChild(oDiv1);
+					var oDiv2=document.createElement("div");
+					oDiv2.className="post_content";
+					
+					oDiv2.innerHTML=oTxt.value;
 					oTxt.value="";
-					oUll.insertBefore(oLi,oUll.children[0]);
+					oLi.appendChild(oDiv2);
+					
 					if(oUll.children.length>0)
 					{
-					  
-						
-					
+					  oUll.insertBefore(oLi,oUll.children[0]);			
 					}
 					else
 					{
@@ -53,12 +79,18 @@
 </head>
 
 <body>
+	<div id="textdiv">
+		<textarea id="post" ></textarea>
+		<div class="commentselect">
+			<a href="#" title="琛ㄦ儏" class="face">琛ㄦ儏</a>
+			<input type="button" value="鍙戣〃" id="btn"/>
 
-<textarea id="post" ></textarea>  
-<input type="button" value="发表" id="btn"/>
+		</div>	
+	</div>
 
-<ul id="ull">
-	<li class="post_li">第一条</li>
-</ul>
+
+	<ul id="ull">
+		<li class="post_li"></li>
+	</ul>
 </body>
 </html>
