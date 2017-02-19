@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>选项卡</title>
+<style type="text/css">
+	#div1 div{
+		border:solid 3px;
+		background:#999999;
+		width:200px;
+		height:200px;
+		display:none;
+	}
+	#div1 .active{
+		background:#999999;
+	}
+</style>
+
+<script type="text/javascript">
+	window.onload=function(){
+	    var oDiv1=document.getElementById("div1");
+		var oPuts=oDiv1.getElementsByTagName("input");
+		var oDivs=oDiv1.getElementsByTagName("div");
+
+		for(var i=0;i<oPuts.length;i++){
+		    oPuts[i].index=i;
+			oPuts[i].onclick=function(){
+				for(var j=0;j<oPuts.length;j++){
+					oPuts[j].className="";
+					oDivs[j].style.display="none";
+				}
+				this.className="active";
+				oDivs[this.index].style.display="block";
+			}
+		} 
+	
+	}
+</script>
+</head>
+<div id="div1">
+	<input type="button" value="Web前端"/>
+	<input type="button" value="Web后端"/>
+	<input type="button" value="大数据"/>
+	<input type="button" value="云计算"/>
+	<div id="div2" style="display:block">11111</div>
+	<div id="div3">22222</div>
+	<div id="div4">33333</div>
+	<div id="div5">44444</div>
+</div>
+
+
+<body>
+</body>
+</html>

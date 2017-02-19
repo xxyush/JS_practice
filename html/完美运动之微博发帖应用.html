@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>微博应用</title>
+<style>
+	ul{	width:800px;	height:800px;	border:black solid 1px;	margin:10px auto; padding:0}
+	ul li{	border-bottom:black	dashed 1px; padding:4px; list-style:none; filter:alpha(opacity:0);opacity:0;	}
+	
+	#post{ width::150px; height:100px;}
+</style>
+<script src="move2.js"></script>
+<script >
+	window.onload=function()
+	{
+	
+		var oTxt=document.getElementById("post");
+		var oBtn=document.getElementById("btn");
+		var oUll=document.getElementById("ull");
+		
+	    oBtn.onclick=function()
+		{
+			if(oTxt.value.length>0)
+			{
+			
+					var oLi=document.createElement("li");
+					oLi.innerHTML=oTxt.value;
+					oTxt.value="";
+					oUll.insertBefore(oLi,oUll.children[0]);
+					if(oUll.children.length>0)
+					{
+					  
+						
+					
+					}
+					else
+					{
+						oUll.appendChild(oLi);
+					}
+					
+			}
+				var iHeight=oLi.offsetHeight;
+				oLi.style.height=0;
+				
+				startMove(oLi,{height:iHeight,opacity:100});
+			
+		}
+			
+			
+		
+	}
+</script>
+</head>
+
+<body>
+
+<textarea id="post" ></textarea>  
+<input type="button" value="发表" id="btn"/>
+
+<ul id="ull">
+	<li class="post_li">第一条</li>
+</ul>
+</body>
+</html>

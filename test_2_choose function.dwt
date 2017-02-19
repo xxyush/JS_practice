@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Chose</title>
+<script>
+window.onload=function(){
+var oDiv=document.getElementById("div1");
+var oInput1=document.getElementById("button1");
+    oInput1.onclick=function(){
+	var checkbosx=oDiv.getElementsByTagName("input");
+	for(var i=0;i<checkbosx.length;i++){
+	  checkbosx[i].checked=true;
+	  
+	  }
+	}
+	
+	var oInput2=document.getElementById("button2");
+    oInput2.onclick=function(){
+	var checkbosx=oDiv.getElementsByTagName("input");
+	for(var i=0;i<checkbosx.length;i++){
+	  checkbosx[i].checked=false;
+	  
+	  }
+	}
+	
+	var oInput3=document.getElementById("button3");
+    oInput3.onclick=function(){
+	var checkbosx=oDiv.getElementsByTagName("input");
+	for(var i=0;i<checkbosx.length;i++){
+	if(checkbosx[i].checked==true){
+	  checkbosx[i].checked=false;
+	  
+	  }else{
+	  	  checkbosx[i].checked=true;
+
+	  }
+	}
+	}
+
+}
+</script>
+</head>
+<input type="button" id="button1" value="choose all"/>
+<input type="button" id="button2" value="not choose"/>
+<input type="button" id="button3"  value="not choose all"/>
+<div id="div1">
+<input type="checkbox" /><br />
+<input type="checkbox" /><br />
+<input type="checkbox" /><br />
+<input type="checkbox" /><br />
+<input type="checkbox" /><br />
+<input type="checkbox" /><br />
+<input type="checkbox" /><br />
+<input type="checkbox" /><br />
+<input type="checkbox" /><br />
+<input type="checkbox" /><br />
+</div>
+
+<body>
+</body>
+</html>

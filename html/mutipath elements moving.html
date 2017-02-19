@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Multipath Element moving</title>
+<style>
+	 #div1{ width:200px;height:200px;background:red; border:1px solid black;margin:20px;float:left}
+	 #div2{ width:200px;height:200px;background:red;border:1px solid black;margin:20px;float:left}
+	 #div3{ width:200px;height:200px;background:red;border:1px solid black;margin:20px;float:left;border:yellow solid 10px}
+	 #div4{ width:200px;height:200px;background:red;border:1px solid black;margin:20px;float:left;font:"宋体" 10px;}
+	 #div5{ width:200px;height:200px;background:red;border:1px solid black;margin:20px;float:left;filter:alpat(opacity:30);opacity:0.3} 
+</style>
+<script>
+	window.onload=function(){
+		var oDiv1=document.getElementById("div1");	
+		var oDiv2=document.getElementById("div2");	
+		var oDiv3=document.getElementById("div3");	
+		var oDiv4=document.getElementById("div4");	
+		var oDiv5=document.getElementById("div5");
+	
+		oDiv1.onmouseover=function(){
+	
+		     startMove(this,"width",400);
+		}	
+		oDiv1.onmouseout=function(){
+			
+		      startMove(this,"width",200);
+		}	
+		oDiv2.onmouseover=function(){
+	
+		     startMove(this,"height",400);
+		}	
+		oDiv2.onmouseout=function(){
+			
+		      startMove(this,"height",200);
+		}	
+		oDiv3.onmouseover=function(){
+	
+		     startMove(this,"border-width",40);
+		}	
+		oDiv3.onmouseout=function(){
+			
+		      startMove(this,"border-width",10);
+		}	
+		oDiv4.onmouseover=function(){
+	
+		     startMove(this,"font-size",40);
+		}	
+		oDiv4.onmouseout=function(){
+			
+		      startMove(this,"font-size",10);
+		}	
+		oDiv5.onmouseover=function(){
+	
+		     startMove(this,"opacity",100);
+		}	
+		oDiv5.onmouseout=function(){
+			
+		      startMove(this,"opacity",30);
+		}	
+		
+		
+	}
+	function startMove(obj,attr,target){
+		
+		clearInterval(obj.timer);
+		
+		var speed;
+		obj.timer=setInterval(function(){
+			var cur;
+			if(attr=='opacity'){
+				cur=Math.round(parseFloat(getStyle(obj,attr))*100);
+			}else{
+				cur=parseInt(getStyle(obj,attr));//这个cur要放在内部，每次都是在这个基础上进行变化。
+			}
+			
+		    speed=(target-cur)/6; //非匀速运动，必须取整数
+			speed=speed>0?Math.ceil(speed):Math.floor(speed);
+			alert(speed)
+			if(cur==target){
+				clearInterval(obj.timer);
+			}else{
+			    if(attr=='opacity'){
+				    obj.style.opacity=(cur+speed)/100;
+					obj.style.filter='alpha(opacity:'+(cur+speed)+')';
+					document.getElementById('txt').value=obj.style.opacity;
+				}
+				else{
+					obj.style[attr]=cur+speed+'px';
+					
+				}
+					
+				
+				
+			
+			}
+			document.title=cur;
+		
+		},30);
+		
+	}
+	function getStyle(obj,attr){
+		if(obj.currentStyle){
+			return obj.currentStyle[attr]
+		}else
+		{
+			return getComputedStyle(obj,false)[attr]
+		}
+	
+	}
+
+</script>
+</head>
+<body>
+<input type='text' id="txt"/>
+
+<div id="div1">变宽</div>
+<div id="div2">变高</div>
+<div id="div3">边框变化</div>
+<div id="div4">字体变化</div>
+<div id="div5">透明度变化</div>
+
+</body>
+</html>

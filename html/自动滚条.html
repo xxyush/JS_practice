@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>自动滚条</title>
+<style>
+#parent{ width:30px; height:800px;border:3px black solid; background: #999999; position:absolute; left:500px; }
+#scroll{ width:30px; height:30px; background:red; position:absolute;left:0; top:0;}
+#ParentBox{ width:400px; height:800px; border:2px black solid; background: #999999; overflow:hidden; padding:20px; position:relative }
+#LettersBox{ position:absolute}
+</style>
+<script>
+function myAddEvent(obj,ev,fnt){
+
+		if(obj.attachEvent){
+		alert("on");
+			obj.attachEvent("on"+ev,fnt);
+
+			
+		}else{
+
+			obj.addEventListener(ev,fnt,false)
+		}
+	}
+window.onload=function(){
+
+ 
+	var oDivParent=document.getElementById("parent");
+	var oDivScroll=document.getElementById("scroll");
+	var oDivPBox=document.getElementById("ParentBox");
+	var oDivLBox=document.getElementById("LettersBox");
+	var disX;
+	
+	myAddEvent(oDivParent,"mousedown",function(ev){
+
+		var oEvent=ev||event;
+		disX=oEvent.clientY-oDivScroll.offsetTop;
+		
+        document.onmousemove=function(ev){
+				var oEvent=ev||event;
+				var l=oEvent.clientY-disX;
+				if(l<0){
+					l=0;
+				}else if(l>oDivParent.offsetHeight-oDivScroll.offsetHeight-6){
+					l=oDivParent.offsetHeight-oDivScroll.offsetHeight-6;
+				}
+				
+				oDivScroll.style.top=l+"px";
+				
+				var scale=l/(oDivParent.offsetHeight-oDivScroll.offsetWidth);
+				var fBoxTop=-(oDivLBox.offsetHeight-oDivPBox.offsetHeight)*scale;
+				oDivLBox.style.top=fBoxTop+"px";
+				
+		}
+		document.onmouseup=function(ev){
+			oDivParent.onmousedown=null;
+			document.onmousemove=null;
+		}
+		
+		return false;
+	});
+	
+	
+	
+	
+}
+</script>
+</head>
+
+<body>
+<div id="parent"><div id="scroll"></div></div>
+
+<div id="ParentBox">
+	<div id="LettersBox">SongTaste 用音乐倾听彼此官网
+音乐分享、音乐试听、非主流音乐、欧美音乐、独立音乐。页面简洁,无眩杂广告。... What do you think is the Best Song in the world? 开始你的音乐之旅 ...
+www.songtaste.com/  - 百度快照 - 146条评价
+songtaste吧_百度贴吧
+
+用音乐倾听彼此，Come on ！
+关注用户：1万人
+累计发贴：6万
+技术贴音乐分享经验分享求助贴
+【倾听彼此】 贴吧福利 ST复活插件 （整合4版 ...精	点击：30万	回复：1153
+分享个目前仍然可以下载搜索播放的ST软件精	点击：8万	回复：337
+好东西一起分享把精	点击：4万	回复：160
+查看更多songtaste吧的内容>>
+tieba.baidu.com/songtaste?fr=ala0 
+折腾九年 SongTaste黯然退市-股票频道-和讯网
+
+2015年8月7日 - 如今,成立已九年的SongTaste(以下简称“ST”)也退出了音乐市场,点击网站进入歌曲播放后,会出现“由于版权原因,播放按钮君不见了,我们会尽全力解救他...
+stock.hexun.com/2015-0...  - 百度快照 - 69%好评
+【倾听彼此】 贴吧福利 ST复活插件 (整合4版 重开贴)_songtaste吧...
+
+30条回复 - 发帖时间: 2015年8月11日
+1 2 3 4 5 6 7 8 9 10 下一页 尾页 614回复贴,共13页 ,跳到 页确定 
+<<返回songtaste吧【倾听彼此】 贴吧福利 ST复活插件 (整...
+tieba.baidu.com/p/3964...  - 百度快照
+再见Songtaste,再见是为了下一次美好的相遇!-搜狐
+
+2015年8月3日 - 昨天傍晚,做完Alison的个案,刚出地库,就收到了糨糊的信息,她说:“Songtaste下周就要永久关闭了,你快转移歌和文章。”我拿着手机愣了10秒,然后只回
+mt.sohu.com/20150803/n...  - 百度快照 - 602条评价
+songtaste_网络歌手在线试听正版歌曲免费下载_百度音乐
+
+songtaste
+歌手： 网络歌手 专辑：《且试天下》
+00:00	
+下载
+music.baidu.com 
+SONGTASTE_百度百科
+SongTaste是一个音乐分享的互联网产品。作为一个典型的Web 2.0 式的音乐分享网站，用户在这里可以试听歌曲，并互相交流、推荐歌曲。Song Taste 意为音乐盛宴。为...
+网站概况 功能特点 网站目标 关闭音乐版块
+baike.baidu.com/ 
+推荐音乐 -- SongTaste 用音乐倾听彼此
+音乐分享、音乐试听、非主流音乐、欧美音乐、独立音乐。页面简洁,无眩杂广告。... 你可能会喜欢他/她们 查找所有 大家推荐的歌曲 ST分析器 语言 这些歌曲如何排序...
+www.songtaste.com/music/  - 百度快照 - 146条评价
+songtaste这个音乐网站的问题_百度知道
+2个回答 - 最新回答: 2009年02月28日 - 437人觉得有用
+最佳答案: 首先,songtaste并不是一个非主流音乐网站,但是他与一般网站的不同之处在于,音乐的种类繁多,世界各地的音乐都有,比如越南音乐,泰国音乐等等,而且大范围的...
+更多关于songtaste的问题>>
+zhidao.baidu.com/link?...  - 百度快照 - 4700条评价
+Songtaste官方微博的微博_微博
+
+Lv.25 Songtaste音乐网站 3 行业类别 休闲娱乐-音乐 ü 简介: http://www.songtaste.com/ 官方Q群:308262002 T 友情链接 听一首歌再睡觉 Songtaste贴吧...
+weibo.com/iamsongtaste  - 百度快照 - 2477条评价
+
+音乐分享、音乐试听、非主流音乐、欧美音乐、独立音乐。页面简洁,无眩杂广告。... What do you think is the Best Song in the world? 开始你的音乐之旅 ...
+www.songtaste.com/  - 百度快照 - 146条评价
+songtaste吧_百度贴吧
+
+用音乐倾听彼此，Come on ！
+关注用户：1万人
+累计发贴：6万
+技术贴音乐分享经验分享求助贴
+【倾听彼此】 贴吧福利 ST复活插件 （整合4版 ...精	点击：30万	回复：1153
+分享个目前仍然可以下载搜索播放的ST软件精	点击：8万	回复：337
+好东西一起分享把精	点击：4万	回复：160
+查看更多songtaste吧的内容>>
+tieba.baidu.com/songtaste?fr=ala0 
+折腾九年 SongTaste黯然退市-股票频道-和讯网
+
+2015年8月7日 - 如今,成立已九年的SongTaste(以下简称“ST”)也退出了音乐市场,点击网站进入歌曲播放后,会出现“由于版权原因,播放按钮君不见了,我们会尽全力解救他...
+stock.hexun.com/2015-0...  - 百度快照 - 69%好评
+【倾听彼此】 贴吧福利 ST复活插件 (整合4版 重开贴)_songtaste吧...
+
+30条回复 - 发帖时间: 2015年8月11日
+1 2 3 4 5 6 7 8 9 10 下一页 尾页 614回复贴,共13页 ,跳到 页确定 
+<<返回songtaste吧【倾听彼此】 贴吧福利 ST复活插件 (整...
+tieba.baidu.com/p/3964...  - 百度快照
+再见Songtaste,再见是为了下一次美好的相遇!-搜狐
+
+2015年8月3日 - 昨天傍晚,做完Alison的个案,刚出地库,就收到了糨糊的信息,她说:“Songtaste下周就要永久关闭了,你快转移歌和文章。”我拿着手机愣了10秒,然后只回
+mt.sohu.com/20150803/n...  - 百度快照 - 602条评价
+songtaste_网络歌手在线试听正版歌曲免费下载_百度音乐
+
+songtaste
+歌手： 网络歌手 专辑：《且试天下》
+00:00	
+下载
+music.baidu.com 
+SONGTASTE_百度百科
+SongTaste是一个音乐分享的互联网产品。作为一个典型的Web 2.0 式的音乐分享网站，用户在这里可以试听歌曲，并互相交流、推荐歌曲。Song Taste 意为音乐盛宴。为...
+网站概况 功能特点 网站目标 关闭音乐版块
+baike.baidu.com/ 
+推荐音乐 -- SongTaste 用音乐倾听彼此
+音乐分享、音乐试听、非主流音乐、欧美音乐、独立音乐。页面简洁,无眩杂广告。... 你可能会喜欢他/她们 查找所有 大家推荐的歌曲 ST分析器 语言 这些歌曲如何排序...
+www.songtaste.com/music/  - 百度快照 - 146条评价
+songtaste这个音乐网站的问题_百度知道
+2个回答 - 最新回答: 2009年02月28日 - 437人觉得有用
+最佳答案: 首先,songtaste并不是一个非主流音乐网站,但是他与一般网站的不同之处在于,音乐的种类繁多,世界各地的音乐都有,比如越南音乐,泰国音乐等等,而且大范围的...
+更多关于songtaste的问题>>
+zhidao.baidu.com/link?...  - 百度快照 - 4700条评价
+Songtaste官方微博的微博_微博
+
+Lv.25 Songtaste音乐网站 3 行业类别 休闲娱乐-音乐 ü 简介: http://www.songtaste.com/ 官方Q群:308262002 T 友情链接 听一首歌再睡觉 Songtaste贴吧...
+weibo.com/iamsongtaste  - 百度快照 - 2477条评价
+音乐分享、音乐试听、非主流音乐、欧美音乐、独立音乐。页面简洁,无眩杂广告。... What do you think is the Best Song in the world? 开始你的音乐之旅 ...
+www.songtaste.com/  - 百度快照 - 146条评价
+songtaste吧_百度贴吧
+
+用音乐倾听彼此，Come on ！
+关注用户：1万人
+累计发贴：6万
+技术贴音乐分享经验分享求助贴
+【倾听彼此】 贴吧福利 ST复活插件 （整合4版 ...精	点击：30万	回复：1153
+分享个目前仍然可以下载搜索播放的ST软件精	点击：8万	回复：337
+好东西一起分享把精	点击：4万	回复：160
+查看更多songtaste吧的内容>>
+tieba.baidu.com/songtaste?fr=ala0 
+折腾九年 SongTaste黯然退市-股票频道-和讯网
+
+2015年8月7日 - 如今,成立已九年的SongTaste(以下简称“ST”)也退出了音乐市场,点击网站进入歌曲播放后,会出现“由于版权原因,播放按钮君不见了,我们会尽全力解救他...
+stock.hexun.com/2015-0...  - 百度快照 - 69%好评
+【倾听彼此】 贴吧福利 ST复活插件 (整合4版 重开贴)_songtaste吧...
+
+30条回复 - 发帖时间: 2015年8月11日
+1 2 3 4 5 6 7 8 9 10 下一页 尾页 614回复贴,共13页 ,跳到 页确定 
+<<返回songtaste吧【倾听彼此】 贴吧福利 ST复活插件 (整...
+tieba.baidu.com/p/3964...  - 百度快照
+再见Songtaste,再见是为了下一次美好的相遇!-搜狐
+
+2015年8月3日 - 昨天傍晚,做完Alison的个案,刚出地库,就收到了糨糊的信息,她说:“Songtaste下周就要永久关闭了,你快转移歌和文章。”我拿着手机愣了10秒,然后只回
+mt.sohu.com/20150803/n...  - 百度快照 - 602条评价
+songtaste_网络歌手在线试听正版歌曲免费下载_百度音乐
+
+songtaste
+歌手： 网络歌手 专辑：《且试天下》
+00:00	
+下载
+music.baidu.com 
+SONGTASTE_百度百科
+SongTaste是一个音乐分享的互联网产品。作为一个典型的Web 2.0 式的音乐分享网站，用户在这里可以试听歌曲，并互相交流、推荐歌曲。Song Taste 意为音乐盛宴。为...
+网站概况 功能特点 网站目标 关闭音乐版块
+baike.baidu.com/ 
+推荐音乐 -- SongTaste 用音乐倾听彼此
+音乐分享、音乐试听、非主流音乐、欧美音乐、独立音乐。页面简洁,无眩杂广告。... 你可能会喜欢他/她们 查找所有 大家推荐的歌曲 ST分析器 语言 这些歌曲如何排序...
+www.songtaste.com/music/  - 百度快照 - 146条评价
+songtaste这个音乐网站的问题_百度知道
+2个回答 - 最新回答: 2009年02月28日 - 437人觉得有用
+最佳答案: 首先,songtaste并不是一个非主流音乐网站,但是他与一般网站的不同之处在于,音乐的种类繁多,世界各地的音乐都有,比如越南音乐,泰国音乐等等,而且大范围的...
+更多关于songtaste的问题>>
+zhidao.baidu.com/link?...  - 百度快照 - 4700条评价
+Songtaste官方微博的微博_微博
+
+Lv.25 Songtaste音乐网站 3 行业类别 休闲娱乐-音乐 ü 简介: http://www.songtaste.com/ 官方Q群:308262002 T 友情链接 听一首歌再睡觉 Songtaste贴吧...
+weibo.com/iamsongtaste  - 百度快照 - 2477条评价
+相关搜索</div>
+</div>
+
+
+</body>
+</html>

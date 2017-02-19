@@ -1,0 +1,22 @@
+//获取某个属性
+function getStyle(obj, name)
+{
+	if(obj.currentStyle)
+	{
+		return obj.currentStyle[name];
+	}
+	else
+	{
+		return getComputedStyle(obj, false)[name];
+	}
+}
+
+//获取点击的坐标
+	function getPosition(ev){
+		var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+		var scrollLeft=document.documentElement.ScrollLeft||document.body.scrollLeft;
+		return {x:ev.clientY+scrollTop, y:ev.clientX+scrollLeft}
+	}
+	
+	
+	

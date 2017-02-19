@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>share+moving</title>
+<style>
+	div{	width:200px;	height:200px;	background:red; position:absolute;left:-200px; top:50px}
+	div span{	width:20px;	height:60px;	background:blue; position:absolute;top:80px; right:-20px}
+</style>
+<script>
+window.onload=function(){
+    var oDiv=document.getElementById("div1");
+	oDiv.onmouseover=function(){
+	            target=0;
+				startMove(target);
+				
+			}
+	oDiv.onmouseout=function(){
+				target=-200;
+				startMove(target);
+			}
+}
+ var target;
+ var speed;
+ var timer;
+	function startMove(target){
+		var oDiv=document.getElementById("div1");
+
+		if(oDiv.offsetLeft<=target){ //target可以决定speed参数越少越好
+			speed=10;
+		}else{
+			speed=-10;
+		}
+		clearInterval(timer);
+		timer=setInterval(function(){
+		    if(oDiv.offsetLeft==target){ //target与speed是代码合并后不同点，挑出来作为参数
+				clearInterval(timer);
+			}else{
+				oDiv.style.left=oDiv.offsetLeft+speed+"px";
+			}
+			
+		},30)
+		
+	}
+</script>
+</head>
+
+<body>
+	<div id="div1">
+		<span>分享到</span>
+	</div>
+</body>
+</html>

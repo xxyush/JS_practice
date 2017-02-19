@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>div跟随鼠标</title>
+</head>
+<style>
+ div{ background:red; width:200px; height:200px; position:absolute;}
+</style>
+<script>
+
+	function getPosition(ev){
+		var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+		var scrollLeft=document.documentElement.ScrollLeft||document.body.scrollLeft;
+		return {x:ev.clientY+scrollTop, y:ev.clientX+scrollLeft}
+	}
+	
+	document.onmousemove=function(ev)
+	{
+		var oEvent=ev||event;
+	 	var oDiv=document.getElementById("div1");
+		var pos=getPosition(ev);
+		oDiv.style.top=pos.x+"px";
+		oDiv.style.left=pos.y+"px";
+	}
+</script>
+<body>
+<div id="div1"></div>
+</body>
+</html>

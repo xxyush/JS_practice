@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Picture_show</title>
+</head>
+	<style>
+	*{	padding:0;	margin:0}
+	img{	width:100px;	height:100px}
+	#out_border{	background-color:#999999;	border:#CCCCCC solid 2px;	width:400px;	height:100px;	margin:100px	auto ;	position:relative;	overflow:hidden    	}
+	#out_border ul{	background:red;		position:absolute;	left:0;	top:0}
+	#out_border ul li{	float:left;		background:	#FF66FF;	width:100px;	height:100px;	list-style:none}
+	</style>
+	<script>
+	window.onload=function(){
+	 var oDiv=document.getElementById("out_border");
+	 var oUl=oDiv.getElementsByTagName("ul")[0];
+	  var oLi=oDiv.getElementsByTagName("li");
+	
+	  oUl.style.width=oLi[0].offsetWidth*oLi.lenght;
+	    oUl.innerHTML=oUl.innerHTML+oUl.innerHTML;
+	 setInterval(function(){
+	
+	 if(oUl.offsetLeft<-oUl.offsetWidth/2)
+	 oUl.style.left=0;
+	  oUl.style.left=oUl.offsetLeft-2+"px";
+	 },30)
+	
+	}
+	</script>
+<body>
+	<div id="out_border">
+	   <ul id="picZone">
+	   <li><img src="yu_image_1.JPG" /></li></li>
+	   <li><img src="yu_image_2.JPG" /></li></li>
+	   <li><img src="yu_image_3.JPG" /></li></li>
+	   <li><img src="yu_image_4.JPG" /></li></li>
+
+	   </ul>
+	 </div>
+</body>
+</html>

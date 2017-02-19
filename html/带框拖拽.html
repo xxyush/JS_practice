@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>带框拖拽</title>
+<style>
+	#div1{ width:200px; height:200px; background: #CCCCCC; position:absolute}
+	.divBorder{border:2px dashed red; position:absolute}
+</style>
+<script>
+	window.onload=function(){
+		var oDiv=document.getElementById("div1");
+		
+		var disX;
+		var disY;
+		oDiv.onmousedown=function(ev){
+			var oEvent=ev||event;
+			
+			//var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+		//	var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+			
+		//	var posX=oEvent.clientX+scrollLeft+"px";
+			//var posY=oEvent.clientY+scrollTop+"px";
+			
+			var oDivBox=document.createElement("div");
+			oDivBox.className="divBorder";
+			
+			oDivBox.style.width=oDiv.offsetWidth-4+"px";
+			oDivBox.style.height=oDiv.offsetHeight-4+"px";
+			
+			oDivBox.style.left=oDiv.offsetLeft+"px";
+			oDivBox.style.top=oDiv.offsetTop+"px";
+			document.body.appendChild(oDivBox);
+			
+			disX=oEvent.clientX-oDiv.offsetLeft;
+			disY=oEvent.clientY-oDiv.offsetTop;
+			
+			document.onmousemove=function(ev){
+			
+				var oEvent=ev||event;
+				
+				oDivBox.style.left=oEvent.clientX-disX+"px";
+				oDivBox.style.top=oEvent.clientY-disY+"px";
+				if(oDiv.setCapture){
+					oDiv.setCapture();
+				}
+				
+			}
+			
+			document.onmouseup=function(ev){
+			
+				var oEvent=ev||event;
+				
+				oDiv.style.left=oDivBox.offsetLeft+"px";
+				oDiv.style.top=oDivBox.style.offsetTop+"px"
+				
+				document.body.removeChild(oDivBox);
+				if(oDiv.releaseCapture){
+					oDiv.releaseCapture();
+				}
+			}
+			
+			return false;
+			
+		}
+	}
+</script>
+</head>
+
+<body>
+<div><p>hhhhhhhhhhhhhhhhhh</p></div>
+<div id="div1">
+	<p>wowowoooooooooooooo</p>
+</div>
+
+<p>77777777777777777777777</p>
+</body>
+</html>
