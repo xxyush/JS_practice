@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>getStyle</title>
+	<style type="text/css">
+		.myDiv{
+			width:200px;			
+			background: red;
+			border-radius:100px;
+			border: 1px solid black;
+			margin: 0 auto;
+			text-align: center;
+		
+		}
+		#myText{
+			display: block;
+			margin: 20px auto;
+		}
+		.content{
+			display:block;
+			margin: 20px auto;
+			background: blue;
+			color: #fff;
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var text=document.getElementById('myText');
+			var textValue=document.getElementsByClassName('myDiv')[0].style.height;
+			var textValue2=document.getElementsByClassName('myDiv')[0].style.width;
+			text.value=textValue;
+		}
+	</script>
+</head>
+
+<body>
+<input type="text" name="showBox" id="myText" >
+
+<div class="myDiv" style="height:200px"></div>
+
+<span class="content">element.style只可获取行间样式，无法访问链接的外部css和在head中用style声明的样式</span>
+	
+</body>
+</html>
