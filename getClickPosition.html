@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Get点击坐标</title>
+</head>
+<script type="text/javascript">
+	window.onload=function(){
+		document.onclick=function(evt){
+			var ev=evt||event;
+			var positionX=ev.clientX;
+			var positionY=ev.clientY;
+			alert("positionX="+positionX+" /n positionY="+positionY);
+		}
+	}
+</script>
+<body>
+	
+</body>
+</html>
