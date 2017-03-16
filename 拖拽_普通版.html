@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽</title>
+</head>
+<style>
+	#div1{
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		background: red;
+	}
+	
+</style>
+<script>
+	window.onload=function(){
+
+		var oDiv=document.getElementById("div1");
+
+		oDiv.onmousedown=function(ev){
+			var oEvent=ev||event;
+			var disX=oEvent.clientX-oDiv.offsetLeft;
+			var disY=oEvent.clientY-oDiv.offsetTop;
+			document.onmousemove=function(ev){
+				var oEvent=ev||event;
+				var l=oEvent.clientX-disX;
+				var t=oEvent.clientY-disY;
+				if(l<0){
+					l=0;
+				}else if(l>document.documentElement.clientWidth-oDiv.offsetWidth){
+					l=document.documentElement.clientWidth-oDiv.offsetWidth;
+				}
+				if(t<0){
+					t=0;
+				}else if(t>document.documentElement.clientHeight-oDiv.offsetHeight){
+					t=document.documentElement.clientHeight-oDiv.offsetHeight;
+				}
+				oDiv.style.left=l+"px";
+				oDiv.style.top=t+"px";
+				
+			};
+			document.onmouseup=function(){
+				// var oEvent=ev||event;
+				document.onmousemove=null;
+				document.onmousedown=null;
+
+			};
+			return false;//阻止默认行为，修复FF下空div拖拽有阴影的bug
+			}
+	}
+</script>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>	
+</body>
+</html>
