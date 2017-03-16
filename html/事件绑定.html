@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>事件绑定</title>
+<style>
+	
+</style>
+<script>
+    function myEvent(obj,ev,fnt){
+	
+		if(obj.attachEvent){
+		
+			obj.attachEvent("on"+ev,fnt);
+			
+		}else{
+		
+			obj.addEventListener(ev,fnt,false)
+		}
+	}
+	window.onload=function(){
+		var oBtn=document.getElementById("btn");
+		myEvent(oBtn,"click",function(){
+			alert("a");
+		})
+		myEvent(oBtn,"click",function(){
+			alert("b");
+		})
+	}
+</script>
+</head>
+
+<body>
+<input type="button" value="点击" id="btn"/>
+</body>
+</html>

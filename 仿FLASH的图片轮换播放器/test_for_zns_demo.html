@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>test_zns_demo</title>
+<style>
+     ul { padding: 0; margin: 0; } li { list-style: none; } img { border: 0; }
+    li { list-style: none; }
+	#play_background{width:200px;height:300px;position:relative;top:50px;left:50px;background:	#CCCCCC;}
+	#mark_left{width:100px;height:200px;filter:alpha(opacity:0);opacity:0;position:absolute;top:0;left:0;}
+	#mark_right{width:100px;height:200px;filter:alpha(opacity:60);opacity:0.6;position:absolute;top:0;left:100px;}
+	div #pre{width:60px;height:60px;background:url(images/btn.gif) no-repeat;position:absolute;top:65px;left:20px;z-index:30001;filter:alpha(opacity:0);opacity:0}
+	div #next{width:60px;height:60px;background:url(images/btn.gif) no-repeat 0 -60px ;position:absolute;top:65px;right:20px;z-index:30002;filter:alpha(opacity:0);opacity:0}
+	div ul{width:200px;height:200px; overflow: hidden;position:absolute;top:0;left:0;}
+	#big_ul li { width: 200px; height: 200px; overflow: hidden; position: absolute; top: 0; left: 0; z-index: 0; background: url(images/loading.gif) no-repeat center center; }
+	
+	
+	#small_pic{width:200px;height:100px;border:solid  2px 	#CCCCCC;position:relative;top:200px;left:0;  }
+	#smal_pic ul{width:200px;height:100px;position:absolute;top:0;left:0;overflw:hidden}
+	#small_pic li{width:58px;height:100px;float:left;background: url(images/loading.gif) no-repeat center center;cursor:pointer;padding-right:7px;filter: alpha(opacity=60); opacity: 0.6;}
+	#small_pic img { width: 58px; height: 100px; }
+</style>
+<script>
+
+	window.onload=function(){
+		
+	 var oDiv=document.getElementById("play_background");
+	 var oDivPre=document.getElementById("pre");
+	 var oDivNext=document.getElementById("next");
+	 var oBtn1=document.getElementById("mark_left");
+	 var oBtn2=document.getElementById("mark_right");
+	 	 var now=0;
+
+	 oDivPre.onmouseover=oBtn1.onmouseover=function(){
+	      startMove(oDivPre,'opacity',100)
+	 };
+	  oDivPre.onmouseout=oBtn1.onmouseout=function(){
+	      startMove(oDivPre,'opacity',0)
+	 };
+	  oDivNext.onmouseover=oBtn2.onmouseover=function(){
+	      startMove(oDivNext,'opacity',100)
+	 };
+	  oDivNext.onmouseout=oBtn2.onmouseout=function(){
+	      startMove(oDivNext,'opacity',0)
+	 };
+	 
+	 var oBigUl=document.getElementById("big_ul");
+	 var oBigLis=oBigUl.getElementsByTagName("li");
+	 
+	  var oSmallUl=document.getElementById("samll_ul");
+	
+	 var oSmallLis=oSmallUl.getElementsByTagName("li");
+	   oSmallUl.style.width=oSmallLis[0].offsetWidth*oSmallLis.length+"px";
+	 var nowZIndex=2;
+	 for(var i=0;i<oSmallLis.length;i++){
+	 	 oSmallLis[i].index=i;
+		 oSmallLis[i].onclick=function(){
+		   if(now==this.index) return;
+		   now=this.index;
+		   tab();
+		  }
+		   oSmallLis[now].onmouseover=function(){
+		  	 startMove(oSmallLis[now],'opacity',100);
+		  }
+		   oSmallLis[now].onmouseout=function(){
+		  	if(now!=this.index){
+				 startMove(oSmallLis[now],'opacity',20);
+			}
+			
+	 }
+	 }
+	 
+	 oDivNext.onclick=function(){
+	 	now++;
+		if(now==oBigLis.length){
+			now=0;
+		}
+		tab()
+	 }
+	 oDivPre.onclick=function(){
+	 	now--;
+		if(now==-1){
+			now=oBigLis.length-1;
+		}
+		tab()
+	 }
+     function tab(){
+	 
+	  oBigLis[now].style.zIndex=nowZIndex++;
+		oBigLis[now].style.height=0;
+		startMove(oBigLis[now],'height',200);	
+			   
+		   for( i=0;i<oSmallLis.length;i++){
+			startMove(oSmallLis[i],'opactiy',20);
+		}
+		startMove(oSmallLis[now],'opactiy',100);
+		if(now==0){
+		 startMove(oSmallUl,'left',0);
+		}else if(now==oSmallLis.length-1){
+		startMove(oSmallUl,'left',-(now-2)*oSmallLis[now].offsetWidth);
+		}else{
+		startMove(oSmallUl,'left',-(now-1)*oSmallLis[now].offsetWidth);
+		}
+		
+		
+	 } 
+	 
+	var timer=setInterval(oDivNext.onclick, 2000);
+	
+	oDiv.onmouseover=function ()
+	{
+		clearInterval(timer);
+	};
+	oDiv.onmouseout=function ()
+	{
+		timer=setInterval(oDivNext.onclick, 2000);
+	};
+	  
+	}
+	
+	function startMove(obj,attr,target){
+		
+		clearInterval(obj.timer);
+		
+		var speed;
+		obj.timer=setInterval(function(){
+			var cur;
+			if(attr=='opacity'){
+				cur=Math.round(parseFloat(getStyle(obj,attr))*100);
+			}else{
+				cur=parseInt(getStyle(obj,attr));//这个cur要放在内部，每次都是在这个基础上进行变化。
+			}
+			
+		    speed=(target-cur)/6; //非匀速运动，必须取整数
+			speed=speed>0?Math.ceil(speed):Math.floor(speed);
+			if(cur==target){
+				clearInterval(obj.timer);
+			}else{
+			    if(attr=='opacity'){
+				    obj.style.opacity=(cur+speed)/100;
+					obj.style.filter='alpha(opacity:'+(cur+speed)+')';
+				}
+				else{
+					obj.style[attr]=cur+speed+'px';
+					
+				}
+					
+				
+				
+			
+			}
+			document.title=cur;
+		
+		},30);
+		
+	}
+	function getStyle(obj,attr){
+		if(obj.currentStyle){
+			return obj.currentStyle[attr]
+		}else
+		{
+			return getComputedStyle(obj,false)[attr]
+		}
+	
+	}
+</script>
+</head>
+
+<body>
+<div id="play_background">
+<ul id="big_ul">
+     <div id="pre"></div>
+	 <div id="next"></div>
+    <a 	href="javascript:;" id="mark_left"></a>
+	<a  href="javascript:;" id="mark_right"></a>
+	
+	<li style="z-index:1"><img src="images/1.jpg" /></li>
+	<li><img src="images/2.jpg" /></li>
+	<li><img src="images/3.jpg" /></li>
+	<li><img src="images/4.jpg" /></li>
+	
+	</ul>
+	<div id="small_pic">
+ 		<ul id="samll_ul">
+	<li><img src="images/1.jpg" /></li>
+	<li><img src="images/2.jpg" /></li>
+	<li><img src="images/3.jpg" /></li>
+	<li><img src="images/4.jpg" /></li>
+ 		</ul>
+	</div>
+</div>
+
+
+</body> 
+</html>

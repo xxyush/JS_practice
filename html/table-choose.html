@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>table</title>
+<style>
+</style>
+	<script>
+		window.onload=function(){
+		var oTab=document.getElementById("tab");
+		var oldColor;
+		for(var i=0;i<oTab.tBodies[0].rows.length;i++){
+			 if(i%2){
+			  oTab.tBodies[0].rows[i].style.background="yellow";
+			  }
+			  else{
+			   oTab.tBodies[0].rows[i].style.background="blue";
+			  }
+			  
+			  oTab.tBodies[0].rows[i].onmouseover=function(){
+			    oldColor=this.style.background;
+			  	this.style.background="red";
+			  }
+			  oTab.tBodies[0].rows[i].onmouseout=function(){
+			    
+			  	this.style.background=oldColor;
+			  }
+			}
+			
+			
+		
+		}
+	</script>
+</head>
+<table id="tab" border="black solid 2px">
+	<thead>
+		<tr>
+			<td>编号</td>
+			<td>姓名</td>
+			<td>年龄</td>
+			<td>学校</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>余璇</td>
+			<td>27</td>
+			<td>同济</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>陈剑</td>
+			<td>27</td>
+			<td>安工大</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>赵三</td>
+			<td>34</td>
+			<td>淮南理工</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>李四</td>
+			<td>35</td>
+			<td>安大</td>
+		</tr>
+	</tbody>
+
+</table>
+<body>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>运动框架</title>
+</head>
+<style>
+	div{	width:200px;	height:200px;	position:absolute;	left:0;	top:50px;	background:red}
+</style>
+<script>
+window.onload=function(){
+var oBtn=document.getElementById("btn");
+	oBtn.onclick=function(){
+		startMove();
+	}
+}
+var timer;
+var speed;
+var target;
+function startMove(target){
+	var oDiv=document.getElementById("move");
+	clearInterval(timer);//防止多次点击，一次生成多个interval,保证永远只有一个定时器在运动
+	timer=setInterval(function(){
+	    if(oDiv.offsetLeft>=300){
+		 	clearInterval(timer);
+		}else{
+			oDiv.style.left=oDiv.offsetLeft+speed+"px";
+		}
+		
+	},30);
+	
+}
+</script>
+<body>
+<input id="btn" type="button" value="click" />
+<div id="move"></div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>一串跟着鼠标的div</title>
+</head>
+<style>
+div{	background:yellow;	border:solid 1px dashed;position:absolute; width:10px; height:10px}
+</style>
+<script>
+function getPosition(ev){
+		var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+		var scrollLeft=document.documentElement.ScrollLeft||document.body.scrollLeft;
+		return {x:ev.clientX+scrollLeft, y:ev.clientY+scrollTop}
+	}
+document.onmousemove=function(ev){
+
+	var oDiv=document.getElementsByTagName("div");
+	var oEvent=ev||event;
+	var pos=getPosition(oEvent);
+	
+	for(var i=oDiv.length-1;i>0;i--)
+	{
+		oDiv[i].style.left=oDiv[i-1].offsetLeft+'px';
+		oDiv[i].style.top=oDiv[i-1].offsetTop+'px';
+	}
+	oDiv[0].style.left=pos.x+'px';
+	oDiv[0].style.top=pos.y+'px';
+}
+</script>
+<body>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+
+</body>
+</html>

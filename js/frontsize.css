@@ -1,0 +1,21 @@
+/* CSS Document */
+
+
+#myp2 {
+    text-shadow:5px 5px 5px red;
+ }
+#myp {
+	text-transform:uppercase;
+	text-decoration:overline;
+	text-shadow:5px 5px 5px red;
+ }
+
+@font-face{
+
+font-family:abc;
+src:url("CHILLER.TTF");
+}
+
+p{
+white-space:nowarp;
+}

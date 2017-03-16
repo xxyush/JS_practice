@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>淡入淡出的图片</title>
+<style>
+	div{width:200px;height:200px;background:red;filter:alpha(opacity:30);opacity:30%}
+</style>
+<script>
+window.onload=function(){
+var oDiv=document.getElementById("div1");
+oDiv.onmouseover=function(){
+				target=100;
+				startMove(target);
+				}
+oDiv.onmouseout=function(){
+				target=10;
+				startMove(target);
+				}
+}
+var timer;
+var alpha=30;
+var target;
+function startMove(target){
+var oDiv=document.getElementById("div1");
+if(alpha<target){
+		speed=1;
+	}else{
+		speed=-1;
+	}
+	clearInterval(timer);
+	timer=setInterval(function(){
+	
+	if(alpha==target){
+		clearInterval(timer);
+	}else{
+	
+		alpha=alpha+speed;
+		oDiv.style.filter='alpha(opacity:'+alpha+')';
+		oDiv.style.opacity=alpha/100;
+		
+	}
+
+	},30);
+
+}
+
+</script>
+
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>
